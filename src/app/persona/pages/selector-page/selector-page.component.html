@@ -1,0 +1,79 @@
+<h1 class="mt-5">AECR - Selectores anidados</h1>
+<hr>
+
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
+
+    <!-- <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Persona:</label>
+            <select class="form-control"
+                    formControlName="persona">
+                <option value="">-- Selecione Persona --</option>
+                <option *ngFor="let item of persona"
+                         [value]="persona"> {{ persona }} </option>
+            </select>
+        </div>
+    </div> -->
+
+    <div class="div">
+        <label>Nombre</label>
+        <input class="form-control"
+             formControlName="nombre"
+             type="text"
+        >
+        <span *ngIf="this.miFormulario.get('nombre')?.errors?.['required']">
+            (El nombre no puede quedar vacío)
+        </span>
+        <span *ngIf="this.miFormulario.get('nombre')?.errors?.['minlength']">
+            (El nombre debe tener como mínimo 2 caracteres)
+        </span>
+    </div>
+
+    <hr>
+    <div class="div">
+        <label>Apellido</label>
+        <input class="form-control"
+             formControlName="apellido"
+             type="text"
+        >
+        <span *ngIf="this.miFormulario.get('apellido')?.errors?.['required']">
+            (El apellido no puede quedar vacío)
+        </span>
+        <span *ngIf="this.miFormulario.get('apellido')?.errors?.['minlength']">
+            (El apellido debe tener como mínimo 2 caracteres)
+        </span>
+    </div>
+
+    <hr>
+    <div class="div">
+        <label>Edad</label>
+        <input class="form-control"
+             formControlName="edad"
+             type="number"
+        >
+        <span *ngIf="this.miFormulario.get('edad')?.errors?.['required'] ">  
+            (La edad no puede quedar vacía)
+        </span>
+        <span *ngIf="this.miFormulario.get('edad')?.errors?.['min']">
+            (La edad debe tener como mínimo 18 años)
+        </span>
+        <span *ngIf="this.miFormulario.get('edad')?.errors?.['max']">
+            (La edad debe tener como máx 65 años)
+        </span>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-primary float-end"
+                    type="submit">
+                Selecionar
+            </button>
+        </div>
+    </div>
+
+</form>
+
+<!-- <h3>Formulario</h3>
+<pre>valid: {{ miFormulario.valid }}</pre>
+<pre>{{ miFormulario.value | json }}</pre> -->
